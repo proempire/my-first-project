@@ -45,25 +45,26 @@ const config = {
             },
             {
                 test: /(\.css)$/,
-                loader: [
-                    'style-loader',
-                    'css-loader?modules&importLoaders=1',
-                    'postcss-loader?sourceMap=inline'
-                ]
-                // use: ExtractTextPlugin.extract({
-                //     fallback: 'style-loader',
-                //     use: [
-                //         {
-                //             loader: 'css-loader',
-                //             options: {
-                //                 modules: true
-                //             }
-                //         },
-                //         {
-                //             loader: 'postcss-loader'
-                //         }
-                //     ]
-                // })
+                use: ExtractTextPlugin.extract({
+                    // fallback: 'style-loader',
+                    use: [
+                        {
+                            loader: 'css-loader'
+                        },
+                        {
+                            loader: 'postcss-loader',
+                            options: {
+                                plugins: (loader) => [
+                                  require('postcss-smart-import'),
+                                  require('autoprefixer'),
+                                ]
+                            }
+                        },
+                        {
+                            loader: 'sass-loader'
+                        }
+                    ]
+                })
             }
         ]
     },
@@ -72,22 +73,22 @@ const config = {
         new HtmlWebpackPlugin({
             template: __dirname + '/index.html'
         }),
-        new webpack.LoaderOptionsPlugin({
-            options: {
-                postcss: {
-                    parser: require('postcss-scss'),
-                    plugins: [
-                        require('autoprefixer')({
-                            browsers: ['last 2 versions']
-                        }),
-                        require('precss')
-                    ]
-                }
-            }
-        }),
+        // new webpack.LoaderOptionsPlugin({
+        //     options: {
+        //         postcss: {
+        //             parser: require('postcss-scss'),
+        //             plugins: [
+        //                 require('autoprefixer')({
+        //                     browsers: ['last 3 version']
+        //                 }),
+        //                 require('precss')
+        //             ]
+        //         }
+        //     }
+        // }),
         new webpack.optimize.OccurrenceOrderPlugin(),
         new webpack.optimize.UglifyJsPlugin(),
-        new ExtractTextPlugin('style.css')
+        new ExtractTextPlugin('styles.css')
     ],
     devServer: {
         historyApiFallback: true,
