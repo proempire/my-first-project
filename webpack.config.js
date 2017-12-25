@@ -4,14 +4,17 @@ const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
-const filePath = path.join(__dirname, 'index.js')
-const outputPath = path.join(__dirname, 'build')
+const filePath = path.join(__dirname, '/index.js')
+const outputPath = path.join(__dirname, '/build')
 
 const config = {
     entry: filePath,
     output: {
-        filename: 'bundle-[hash].js',
+        filename: 'bundle.js',
         path: outputPath,
+    },
+    resolve: {
+        extensions: ['*', '.js', '.vue']
     },
     devtool: 'eval-source-map',
     module: {
@@ -73,24 +76,12 @@ const config = {
         new HtmlWebpackPlugin({
             template: __dirname + '/index.html'
         }),
-        // new webpack.LoaderOptionsPlugin({
-        //     options: {
-        //         postcss: {
-        //             parser: require('postcss-scss'),
-        //             plugins: [
-        //                 require('autoprefixer')({
-        //                     browsers: ['last 3 version']
-        //                 }),
-        //                 require('precss')
-        //             ]
-        //         }
-        //     }
-        // }),
         new webpack.optimize.OccurrenceOrderPlugin(),
         new webpack.optimize.UglifyJsPlugin(),
         new ExtractTextPlugin('styles.css')
     ],
     devServer: {
+        contentBase: './build',
         historyApiFallback: true,
         inline: true
     }

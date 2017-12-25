@@ -1,15 +1,14 @@
 <template>
-    <div class="index">
-        index
+    <div class="dashboard">
+        standard 404
     </div>
 </template>
 
 <script>
     export default {
-        name: 'Index',
         data() {
             return {
-                test: 'empty!'
+
             }
         },
         methods: {
