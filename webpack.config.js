@@ -87,6 +87,7 @@ const config = {
     }
 }
 
+// what a fucking configuration!!!
 module.exports = config
 
 
