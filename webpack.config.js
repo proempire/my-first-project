@@ -11,10 +11,11 @@ const config = {
     entry: filePath,
     output: {
         filename: 'bundle.js',
+        publicPath: '/build/',
         path: outputPath,
     },
     resolve: {
-        extensions: ['*', '.js', '.vue']
+        extensions: ['.js', '.vue']
     },
     devtool: 'eval-source-map',
     module: {
@@ -74,14 +75,15 @@ const config = {
     plugins: [
         new webpack.BannerPlugin('版权所有，侵权必究'),
         new HtmlWebpackPlugin({
-            template: __dirname + '/index.html'
+            template: __dirname + '/index.html',
+            inject: true
         }),
         new webpack.optimize.OccurrenceOrderPlugin(),
         new webpack.optimize.UglifyJsPlugin(),
         new ExtractTextPlugin('styles.css')
     ],
     devServer: {
-        contentBase: './build',
+        contentBase: 'build',
         historyApiFallback: true,
         inline: true
     }

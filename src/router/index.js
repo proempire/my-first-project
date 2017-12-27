@@ -4,8 +4,8 @@ import Index from '../components/index'
 // import Dashboard from '../components/dashboard'
 // import NotFoundComponent from '../components/not-found-component'
 // const Index = (resolve) => { require(['../components/index.vue'], resolve) }
-const Dashboard = (resolve) => { require(['../components/dashboard.vue'], resolve) }
-const NotFoundComponent = (resolve) => { require(['../components/not-found-component.vue'], resolve) }
+const Dashboard = (resolve) => { require(['../components/dashboard'], resolve) }
+const NotFound = (resolve) => { require(['../components/not-found'], resolve) }
 
 const ItWorks = {
     template: '<div>It works!</div>'
@@ -23,7 +23,7 @@ const routes = [
     },
     {
         path: '*',
-        component: NotFoundComponent
+        component: NotFound
     }
 ]
 
@@ -34,7 +34,9 @@ const router = new VueRouter({
 })
 
 router.beforeEach((to, from, next) => {
-    // console.log(to.path)
+    console.log(to.path)
+    console.log(Index)
+    // window.location.href = 'http://localhost:8080/index'
     if (to.path === '/') {
         next('/index')
     }
