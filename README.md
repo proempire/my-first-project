@@ -3,7 +3,7 @@
 
 try to build a infrastructure using vue, vue-router, vuex, webpack, babel, eslint, gulp, etc.
 
-# 启动方法（how to use）
+## 启动方法（installation）
 
 1. npm install 安装依赖
 2. npm run build 打包文件, npm run server 启动本地服务
