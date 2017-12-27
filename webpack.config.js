@@ -17,7 +17,7 @@ const config = {
     resolve: {
         extensions: ['.js', '.vue']
     },
-    devtool: 'eval-source-map',
+    devtool: false,
     module: {
         rules: [
             {
@@ -79,7 +79,7 @@ const config = {
             inject: true
         }),
         new webpack.optimize.OccurrenceOrderPlugin(),
-        new webpack.optimize.UglifyJsPlugin(),
+        // new webpack.optimize.UglifyJsPlugin(),
         new ExtractTextPlugin('styles.css')
     ],
     devServer: {

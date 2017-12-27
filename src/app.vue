@@ -1,6 +1,6 @@
 <template>
     <div class="main">
-        <h1>这是一个vue脚手架</h1>
+        <h1>vuevue标题chasing</h1>
         <router-link to="/index">nav to index</router-link>
         <router-view></router-view>
     </div>

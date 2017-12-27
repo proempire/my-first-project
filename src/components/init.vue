@@ -1,12 +1,12 @@
 <template>
-    <div class="index">
-        index
+    <div class="init">
+        init
     </div>
 </template>
 
 <script>
     export default {
-        name: 'Index',
+        name: 'Init',
         data() {
             return {
                 test: 'empty!'
