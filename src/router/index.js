@@ -28,8 +28,8 @@ const routes = [
 ]
 
 const router = new VueRouter({
-    base: '/build/',
-    mode: 'hash',
+    base: '/v0/',
+    mode: 'history',
     routes
 })
 

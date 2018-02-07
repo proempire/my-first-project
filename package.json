@@ -6,7 +6,7 @@
   "scripts": {
     "test": "test",
     "build": "webpack --config ./webpack.config.js --watch",
-    "server": "webpack-dev-server --open"
+    "server": "webpack-dev-server --open --progress --config ./webpack.config.js"
   },
   "repository": {
     "type": "git",

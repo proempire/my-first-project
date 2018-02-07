@@ -4,14 +4,16 @@ const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
-const filePath = path.join(__dirname, '/index.js')
+// const filePath = path.join(__dirname, '/index.js')
 const outputPath = path.join(__dirname, '/build')
 
 const config = {
-    entry: filePath,
+    entry: {
+        app: './index.js'
+    },
     output: {
         filename: 'bundle.js',
-        publicPath: '/build/',
+        publicPath: '/',
         path: outputPath,
     },
     resolve: {
@@ -76,6 +78,7 @@ const config = {
         new webpack.BannerPlugin('版权所有，侵权必究'),
         new HtmlWebpackPlugin({
             template: __dirname + '/index.html',
+            // chunks: ['bundle'],
             inject: true
         }),
         new webpack.optimize.OccurrenceOrderPlugin(),
@@ -83,8 +86,13 @@ const config = {
         new ExtractTextPlugin('styles.css')
     ],
     devServer: {
-        contentBase: 'build',
-        historyApiFallback: true,
+        contentBase: false,
+        historyApiFallback: {
+            rewrites: [
+                { from: /.*/, to: path.posix.join('/', 'index.html') },
+            ],
+        },
+        publicPath: '/',
         inline: true
     }
 }

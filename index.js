@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import App from './src/app.vue'
+import App from './src/App.vue'
 import VueRouter from 'vue-router'
 import router from './src/router/index.js'
 
@@ -10,5 +10,6 @@ Vue.use(VueRouter)
 new Vue({
     router,
     el: '#app',
-    render: (h) => h(App)
+    components: { App },
+    template: '<App/>',
 })

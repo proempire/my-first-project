@@ -1,6 +1,6 @@
 <template>
     <div class="main">
-        <h1>vuevue标题chasing</h1>
+        <h1>vuevue标题</h1>
         <router-link to="/index">nav to index</router-link>
         <router-view></router-view>
     </div>
@@ -8,7 +8,7 @@
 
 <script>
     export default {
-        name: 'app',
+        name: 'App',
         data() {
             return {
 
